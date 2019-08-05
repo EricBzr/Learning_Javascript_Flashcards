@@ -1,6 +1,39 @@
 .container {
   padding-top: 3rem;
   padding-bottom: 5rem;
+  background-color:#1d1f21;
+}
+.card-body {
+    background-color: lightblue;
+    border: 1px solid black;
+}
+.ch8 {
+    background-color: #d87965;
+    border: 1px solid black;
+}
+.ch9 {
+    background-color: #28cc54;
+    border: 1px solid black;
+}
+.ch10 {
+    background-color: #e579f5;
+    border: 1px solid black;
+}
+.ch11 {
+    background-color: #ffab1a;
+    border: 1px solid black;
+}
+.ch12 {
+    background-color: #33dcca;
+    border: 1px solid black;
+}
+.ch13 {
+    background-color: #a2915e;
+    border: 1px solid black;
+}
+.ch14 {
+    background-color: #63408c;
+    border: 1px solid black;
 }
 .flipcard {
   perspective: 1000px;
@@ -48,4 +81,24 @@
 /* the flippy magic */ 
 .flipcard:hover .flipcard-wrap {
   transform: rotateY(-180deg);
+}
+.snippet {
+    background-color: #ebffe4; 
+    color: black; 
+    font-weight: bold; 
+    font-family: monospace; 
+    font-size: 11px; 
+    text-align: left; 
+    white-space:pre;
+}
+.space-holder {
+    height: 145px;
+    background-color: lightcoral;
+    font-size: 10em;
+    text-align: left;
+    overflow: hidden;
+}
+.sub-snippet {
+    white-space: pre; 
+    font-weight: bold;
 }

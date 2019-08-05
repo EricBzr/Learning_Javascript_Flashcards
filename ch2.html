@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body style="background-color: #1d1f21">
+        <h1 style="background-color: #3f798c; padding:20px">Chapter 2: Dev Tools &amp; utilities - Snippets</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+				    <div class="flipcard">
+				        <div class="flipcard-wrap">
+				            <div class="card card-front">
+                                <code class="snippet">
+<!-- ----------------------------------> || FILES TO WORK ACCOMPANY GIT REPOS ||
+<!-- ---------------------------------->
+<!-- ----------------------------------> // .gitignore files
+<!-- ----------------------------------> These files have lists with types of files for git to ignore-
+<!-- ----------------------------------> or not to bother tracking. The contents of a file are as such below:       
+<!-- ----------------------------------> 
+<!-- ----------------------------------> # npm debug logs (starting with the name below)
+<!-- ----------------------------------> npm-debug.log*    
+<!-- ---------------------------------->
+<!-- ----------------------------------> # project dependencies
+<!-- ----------------------------------> node_modules
+<!-- ----------------------------------> 
+<!-- ----------------------------------> # OSX folder attributes
+<!-- ----------------------------------> .DS_Store
+<!-- ---------------------------------->
+<!-- ----------------------------------> # temporary files (ending with the extension ".tmp" or "~")
+<!-- ----------------------------------> *.tmp
+<!-- ----------------------------------> *~
+<!-- ---------------------------------->
+<!-- ----------------------------------> // Markdown files (.md files)
+<!-- ----------------------------------> These files serve as simple textfiles that use special markdown syntax for-
+<!-- ----------------------------------> text style rendering. An example content of one is as such below:
+<!-- ---------------------------------->
+<!-- ----------------------------------> = Javascript Flashcards
+<!-- ----------------------------------> == Chapter 2: Dev Tools
+<!-- ---------------------------------->
+<!-- ----------------------------------> This is an example markdown file that could be in repo explaining a project
+<!-- ---------------------------------->
+<!-- ----------------------------------> || GIT COMMANDS ||
+<!-- ---------------------------------->
+<!-- ----------------------------------> // Initializing a repo
+<!-- ----------------------------------> $ git init
+<!-- ---------------------------------->    
+<!-- ----------------------------------> // Info on current status of repo
+<!-- ----------------------------------> $ git status                                     
+<!-- ---------------------------------->    
+<!-- ----------------------------------> // Adding a file to a repo tracking
+<!-- ----------------------------------> $ git add &amplt;file&gt;
+<!-- ---------------------------------->    
+<!-- ----------------------------------> // Commiting changes 
+<!-- ----------------------------------> $ git commit -m &amplt;commit message&gt;
+                                </code>
+								<div class="card-body">
+								    <h5>Git &amp; Git Commands</h5>
+								</div>
+				            </div>
+				            <div class="card card-back">
+				                <div class="card-body">
+								    <p>
+                                        The most popular version control system. Learn it and use it. Nuff said.
+                                    </p>
+				                </div>
+				            </div>
+				        </div>
+				    </div>
+				</div>
+                <div class="col-md-5">
+				    <div class="flipcard">
+				        <div class="flipcard-wrap">
+				            <div class="card card-front">
+                                <code class="snippet">
+<!-- ----------------------------------> || NPM Commands ||
+<!-- ---------------------------------->                                    
+<!-- ----------------------------------> // Initializing a project JSON file                                   
+<!-- ----------------------------------> $ npm init
+<!-- ---------------------------------->
+<!-- ----------------------------------> // Install all packages listed in an existing project JSON FILE    
+<!-- ----------------------------------> $ npm install
+<!-- ---------------------------------->
+<!-- ----------------------------------> // Install a package     
+<!-- ----------------------------------> $ npm install &lt;package_name>
+<!-- ---------------------------------->
+<!-- ----------------------------------> // Install a specific version of a package
+<!-- ----------------------------------> $ npm install &lt;package_name>@&lt;version_number>                                      
+<!-- ---------------------------------->    
+<!-- ----------------------------------> // Install a package and log in project JSON file 
+<!-- ----------------------------------> $ npm install --save &lt;package_name> 
+                                </code>
+								<div class="card-body">
+								    <h5>Node &amp; NPM</h5>
+								</div>
+				            </div>
+				            <div class="card card-back">
+				                <div class="card-body">
+								    <p>
+                                        NPM is a wildely popular and heavily adopted package management system for JavaScript code. The installation of npm comes bundled with Node or node.js which is software that allows JS code to be run outside a web browser environment.
+
+NPM packages can installed at two levels: globally or locally. Global packages can usually be used as command line tools that can be used during the development process while local packages are project specific.
+
+All packages or package modules that you install in your project directory get stored in a sub-directory (file) called "node_modules". 
+
+All packages that are installed and used by your project are referred to as dependencies. Creating or otherwise having a project file to keep track of these dependencies is essentiall. When you install a package JSON file, Node will automatically log the details of all packages that you install into your project (PROVIDED THAT YOU USED THE "--save"  OR THE "--saveDev" FLAG. DONT FORGET TO USE IT). 
+                                    </p>
+				                </div>
+				            </div>
+				        </div>
+				    </div>
+				</div>
+                <div class="col-md-4">
+				    <div class="flipcard">
+				        <div class="flipcard-wrap">
+				            <div class="card card-front">
+                                <div class=space-holder>&amp;wd</div>
+								<div class="card-body">
+								    <h5>Transcompilers</h5>
+								</div>
+				            </div>
+				            <div class="card card-back">
+				                <div class="card-body">
+								    <p>
+                                        Transcompilers are tools that transform/convert code into other types or versions of code.
+                                        Two popular transcompilers are Babel and Tracuer. Babel for example, is a popular one that orginally
+                                        was used for converting ES5 code to ES6 but now does a entire variety of different conversations.
+                                        A transcompiler like Babel do exist as packages that can be installed in your JS project from NPM. 
+                                    </p>
+				                </div>
+				            </div>
+				        </div>
+				    </div>
+				</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+				    <div class="flipcard">
+				        <div class="flipcard-wrap">
+				            <div class="card card-front">
+                                <div class=space-holder>&amp;wd</div>
+								<div class="card-body">
+								    <h5>Linters</h5>
+								</div>
+				            </div>
+				            <div class="card card-back">
+				                <div class="card-body">
+								    <p>
+                                        Linters are tools that are used to brush-up or reformat code to ones liking or to a convention.
+                                        ESLinter for example is a popular linter that does so and even points out inconsistencies in code to a user.
+                                        ESLinter like Babel also exists as a package that can be installed into your project.
+                                    </p>
+				                </div>
+				            </div>
+				        </div>
+				    </div>
+				</div>
+                <div class="col-md-4">
+				    <div class="flipcard">
+				        <div class="flipcard-wrap">
+				            <div class="card card-front">
+                                <div class=space-holder>&amp;wd</div>
+								<div class="card-body">
+								    <h5>Coventional Code Project Directory</h5>
+								</div>
+				            </div>
+				            <div class="card card-back">
+				                <div class="card-body">
+								    <p>
+                                        Should be as the following:
+                                        &nbsp;public/js/test.js
+                                    </p>
+                                    <p>
+                                        -public: dir. for client-side code
+                                    </p>
+                                    <p>
+                                        -js: dir. for JS code
+                                    </p>
+				                </div>
+				            </div>
+				        </div>
+				    </div>
+				</div>
+                <div class="col-md-4">
+				    <div class="flipcard">
+				        <div class="flipcard-wrap">
+				            <div class="card card-front">
+                                <div class=space-holder>&amp;wd</div>
+								<div class="card-body">
+								    <h5>Build Tools</h5>
+								</div>
+				            </div>
+				            <div class="card card-back">
+				                <div class="card-body">
+								    <p>
+                                        These types of tools automate repetitive tasks of the development process such as transcompiling, minifying, and linting.
+                                        The two most popular build tools to use for Web code like JS are Gulp and Grunt.
+                                    </p>
+				                </div>
+				            </div>
+				        </div>
+				    </div>
+				</div>
+            </div>
+        </div>
+    </body>
+</html>

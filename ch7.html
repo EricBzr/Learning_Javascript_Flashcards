@@ -43,7 +43,7 @@
 				    <div class="flipcard">
 				        <div class="flipcard-wrap">
 				            <div class="card card-front">
-                                <div class=space-holder>&ampwd</div>
+                                <div class=space-holder>&amp;wd</div>
 								<div class="card-body">
 								    <h5>Scope vs Existence</h5>
 								</div>
@@ -113,7 +113,7 @@
 								    <p>
                                         In the hierarchy of scope, the global scope makes the base. Anything declared in the global scope is usually referred to as being a 'global' or 'global variable'. While its fine to have variables be in the global scope, it is in back practice to have code that relies on the global scope. One step to improve the code from the snippet is to have the user information be stored in an object:
                                     </p>
-                                    <p style="white-space: pre; font-weight: bold">
+                                    <p class="sub-snippet">
 <!-- ---------------------------------> let user = {
 <!-- --------------------------------->     name = "Irene"; // now scoped to 'user'
 <!-- --------------------------------->     age = 25,       // now scoped to 'user'
@@ -128,7 +128,7 @@
                                     <p>
                                         Another step further could be as so which now doesnt depend at all on the global scope:
                                     </p>
-                                    <p style="white-space: pre; font-weight: bold">
+                                    <p class="sub-snippet">
 <!-- ---------------------------------> let user = {
 <!-- --------------------------------->     name = "Irene"; // now scoped to 'user'
 <!-- --------------------------------->     age = 25,       // now scoped to 'user'
@@ -205,7 +205,7 @@
 				            <div class="card card-back">
 				                <div class="card-body">
 								    <p>
-                                        Variable masking or shadowing refers to declared variables in nested scopes with the same identfiers as other variables in higher scopes 'overriding' those variables in the hiding scopes. In the code snippet, within the inner block and in the second line, the call to print variable 'x' would print the value that was defined for variable x in the outer block but since a variable with the same identifer was also declared and defined in the inner block, the value defined for the varibale with the same identifier in the inner block gets printed. So, the inner variable essentially "masks" or "shadows" the outer variable. This also demonstrates the hierarchical, chaining nature of scoping. Within nested scopes you have access to all variables in the outer scopes while you, in contrast, wouldnt have access to the variables in nested scopes from the outer ones.        
+                                        Variable masking or shadowing refers to declared variables in nested scopes with the same identfiers as other variables in higher scopes 'overriding' those variables in the hiding scopes. In the code snippet, within the inner block and in the second line, the call to print variable 'x' would print the value that was defined for variable x in the outer block but since a variable with the same identifer was also declared and defined in the inner block, the value defined for the varibale with the same identifier in the inner block gets printed. So, the inner variable essentially "masks" or "shadows" the outer variable. This also demonstrates the hierarchical, chaining nature of scoping. Within nested scopes you have access to all variables in the outer scopes while you, in contrast, wouldnt have access to the variables in nested scopes from the outer ones.         
                                     </p>
 				                </div>
 				            </div>
@@ -229,13 +229,13 @@
 <!-- ----------------------------------> globalFunc();  //logs 'a'                                    
                                 </code>
 								<div class="card-body">
-								    <h5>Functions, Closure, and Lexical</h5>
+								    <h5>Functions &amp; Closture</h5>
 								</div>
 				            </div>
 				            <div class="card card-back">
 				                <div class="card-body">
 								    <p>
-                                        Traditonally in programming, all functions are usually defined in the global scope, but in modern javascript programming, functions are often defined wherever they're needed. A closure is the use of intentionally defining a function in a specific scope (like the block in the code snippet) to have explicit access to that scope. In the code snippet, despite the fact that the function "globalFunc" is outside the block scope, it still has access to the "blockVar" variable. Another important thing to note is that the function has access to the block scope variable despite the scope being exited (since the called function is after the block)  
+                                        Traditonally in programming, all functions are usually defined in the global scope, but in modern javascript programming, functions are often defined wherever they're needed. A closure is the use of intentionally defining a function in a specific scope (like the block in the code snippet) to have explicit access to that scope. In the code snippet, despite the fact that the function "globalFunc" is outside the block scope, it still has access to the "blockVar" variable. Another important thing to note is that the function has access to the block scope variable despite the scope being exited (since the called function is after the block). Normally, when a function is exited, the variables declared in the scope can safely cease to exist, though when there is an instance of a closture like the one in the code snippet, Javascript would need to take note of those variables and would thus effect the lifetime of that closture.   
                                     </p>
 				                </div>
 				            </div>
@@ -247,21 +247,24 @@
 				        <div class="flipcard-wrap">
 				            <div class="card card-front">
                                 <code class="snippet">
-<!-- ----------------------------------> 
-<!-- ---------------------------------->    
-<!-- ---------------------------------->       
-<!-- ---------------------------------->   CODE HERE  
-<!-- ---------------------------------->                   
-<!-- ---------------------------------->     
-<!-- ----------------------------------> 
+<!-- ----------------------------------> const f = (function() {
+<!-- ---------------------------------->    let count = 0;
+<!-- ---------------------------------->    return function() {
+<!-- ---------------------------------->        return `I have been called ${++count} time(s).`;
+<!-- ---------------------------------->                                            }
+<!-- ---------------------------------->    })();
+<!-- ----------------------------------> f(); // "I have been called 1 time(s)."
+<!-- ----------------------------------> f(); // "I have been called 2 time(s)."
                                 </code>
 								<div class="card-body">
-								    <h5>TITLE HERE</h5>
+								    <h5>IIFE: Immediately Invoked Function Expressions</h5>
 								</div>
 				            </div>
 				            <div class="card card-back">
 				                <div class="card-body">
-								    <p>Put Text Here</p>
+								    <p>
+                                        Function expressions can be used to create Immediately Invoked Function Expressions (IIEF's). As the name implies, these are functions which are both declared and then called on immediately. These type of functions are very usefull for the purpose of closures. In the code snippet, the variable "count" is safelly hidden within the outer-most function thats part of an entire function expression that is assigned to constant 'f'. 
+                                    </p>
 				                </div>
 				            </div>
 				        </div>
@@ -272,21 +275,83 @@
 				        <div class="flipcard-wrap">
 				            <div class="card card-front">
                                 <code class="snippet">
-<!-- ----------------------------------> 
-<!-- ---------------------------------->    
-<!-- ---------------------------------->       
-<!-- ---------------------------------->   CODE HERE  
-<!-- ---------------------------------->                   
-<!-- ---------------------------------->     
-<!-- ----------------------------------> 
+<!-- ----------------------------------> x;             // Error: undeclared 
+<!-- ----------------------------------> let x = 3;
+<!-- ----------------------------------> x;             // logs 3                                    
+<!-- ----------------------------------> y;             // logs "undefined"      
+<!-- ----------------------------------> var y = 4;    
+<!-- ----------------------------------> z;             // Error: undeclared                  
+<!-- ----------------------------------> y;             // logs 4    
                                 </code>
 								<div class="card-body">
-								    <h5>TITLE HERE</h5>
+								    <h5>Function Scope &amp; Hoisting</h5>
 								</div>
 				            </div>
 				            <div class="card card-back">
 				                <div class="card-body">
-								    <p>Put Text Here</p>
+								    <p>
+                                        Variables declared with var have something called function scope. Variables declared with var are able to be accessed before they are declared since they are available everywhere in scope they inhabit. Variables declared with let only exist after they are declared. Demonstrated in the code snippet, attempting to access the variable 'x' before it get declared with the keyword let invokes an error. The attempt to access the variable 'y' before its declaration, with no error, returns the value "undefined". The code before the declaration can sometimes be referred as the Temporal Dead Zone (TDZ). Apart from variables declared with var, you must be carefull when testing whether a variable declared with let has been declared since that can be error prone.     
+                                    </p>
+                                    <p>
+                                        Variables declared with var employ a mechanism called "hoisting" where they, no matter what scope they are in, have there declaration (NOT THERE DEFINEMENT) hoisted to to top. The code below: 
+                                    </p>
+                                    <p class="sub-snippet">
+<!-- ---------------------------------> if(x !== 3) {
+<!-- --------------------------------->     console.log(y);    
+<!-- --------------------------------->     var y = 5;
+<!-- --------------------------------->     if(y === 5) { 
+<!-- --------------------------------->         var x = 3;
+<!-- --------------------------------->     }
+<!-- --------------------------------->     console.log(y);
+<!-- ---------------------------------> }
+<!-- ---------------------------------> if(x === 3) {    
+<!-- --------------------------------->     console.log(y);
+<!-- ---------------------------------> }                                        
+                                    </p>
+                                    <p>
+                                        Gets interpreted as this:
+                                    </p>
+                                    <p class="sub-snippet">
+<!-- ---------------------------------> ver x;                                       
+<!-- ---------------------------------> var y;                                       
+<!-- ---------------------------------> if(x !== 3) {
+<!-- --------------------------------->     console.log(y);    
+<!-- --------------------------------->     y = 5;
+<!-- --------------------------------->     if(y === 5) { 
+<!-- --------------------------------->         x = 3;
+<!-- --------------------------------->     }
+<!-- --------------------------------->     console.log(y);
+<!-- ---------------------------------> }
+<!-- ---------------------------------> if(x === 3) {    
+<!-- --------------------------------->     console.log(y);
+<!-- ---------------------------------> }                                          
+                                    </p>
+                                    <p>
+                                        For variables declared with var, Javascript also does not care if a definition is repeated. The code below: 
+                                    </p>
+                                    <p class="sub-snippet">
+<!-- ---------------------------------> ver x = 3;                                                                           
+<!-- ---------------------------------> if(x === 3) {
+<!-- --------------------------------->     var x = 2;    
+<!-- --------------------------------->     console.log(x);
+<!-- ---------------------------------> }
+<!-- ---------------------------------> console.log(x);                                       
+                                    </p>
+                                    <p>
+                                        -Gets interpreted as this:
+                                    </p>
+                                    <p class="sub-snippet">
+<!-- ---------------------------------> ver x;
+<!-- ---------------------------------> x = 3;  
+<!-- ---------------------------------> if(x === 3) {
+<!-- --------------------------------->     x = 2;    
+<!-- --------------------------------->     console.log(x);
+<!-- ---------------------------------> }
+<!-- ---------------------------------> console.log(x);                                       
+                                    </p>
+                                    <p>
+                                        By this regard, var can't be used to create different variables with the same identifier and masking with variables declared with var works differently from those declared with let. For this reason, declaring variables using let is usefull and creates less confusion. 
+                                    </p>
 				                </div>
 				            </div>
 				        </div>
@@ -299,21 +364,25 @@
 				        <div class="flipcard-wrap">
 				            <div class="card card-front">
                                 <code class="snippet">
-<!-- ----------------------------------> 
-<!-- ---------------------------------->    
-<!-- ---------------------------------->       
-<!-- ---------------------------------->   CODE HERE  
-<!-- ---------------------------------->                   
-<!-- ---------------------------------->     
-<!-- ----------------------------------> 
+<!-- ----------------------------------> f();                   // logs 'f' 
+<!-- ----------------------------------> function f() {   
+<!-- ---------------------------------->    console.log('f');      
+<!-- ----------------------------------> }    
+<!-- ----------------------------------> g();                   // Error: g is not a function
+<!-- ----------------------------------> let g = function() {    
+<!-- ---------------------------------->    console.log('g');
+<!-- ----------------------------------> }
+<!-- ----------------------------------> g();                   // logs 'g'                                    
                                 </code>
 								<div class="card-body">
-								    <h5>TITLE HERE</h5>
+								    <h5>Function Hoisting</h5>
 								</div>
 				            </div>
 				            <div class="card card-back">
 				                <div class="card-body">
-								    <p>Put Text Here</p>
+								    <p>
+                                       Function declarations, like variables declared with var, are hoisted to the top of their scope, allowing you to call them before they are declared. Its important to note that function expressions that are assigned to variables are NOT hoisted but adhere to the scopting rule of the variable they were assigned to. 
+                                    </p>
 				                </div>
 				            </div>
 				        </div>
@@ -323,130 +392,22 @@
 				    <div class="flipcard">
 				        <div class="flipcard-wrap">
 				            <div class="card card-front">
-                                <code class="snippet">
-<!-- ----------------------------------> 
-<!-- ---------------------------------->    
-<!-- ---------------------------------->       
-<!-- ---------------------------------->   CODE HERE  
-<!-- ---------------------------------->                   
-<!-- ---------------------------------->     
-<!-- ----------------------------------> 
-                                </code>
+                                <div class=space-holder>&amp;e5</div>
 								<div class="card-body">
-								    <h5>TITLE HERE</h5>
+								    <h5>A Note on Strict Mode</h5>
 								</div>
 				            </div>
 				            <div class="card card-back">
 				                <div class="card-body">
-								    <p>Put Text Here</p>
+								    <p>
+                                        Syntax in javascript allows for "implicit globals" where variables not declared a keyword such as var or let that are defined will be assumed to be trying to refer to a global variable. And if there is no such global variable, it will create one on the spot. Because this is prone to creating confusing bugs and errors, strict mode was introduced as a preventative method to avoid implicit globals. Strict mode is enabled using the explicit statement "'use strict';" on a line BEFORE ANY OTHER CODE IN A SCOPE. If put in the global scope, then the entire program will be run in strict mode. If put in a function, the function will be run in strict mode. Caution should be taken when applying strict mode to the global scope as doing so can also make other javascript code tied to the overall program also run in strict mode. With this in mind, its a good idea to have a program completely be within a non global scope with the strict mode statement to avoid that issue.   
+                                    </p>
 				                </div>
 				            </div>
 				        </div>
 				    </div>
 				</div>
-                <div class="col-md-4">
-				    <div class="flipcard">
-				        <div class="flipcard-wrap">
-				            <div class="card card-front">
-                                <code class="snippet">
-<!-- ----------------------------------> 
-<!-- ---------------------------------->    
-<!-- ---------------------------------->       
-<!-- ---------------------------------->   CODE HERE  
-<!-- ---------------------------------->                   
-<!-- ---------------------------------->     
-<!-- ----------------------------------> 
-                                </code>
-								<div class="card-body">
-								    <h5>TITLE HERE</h5>
-								</div>
-				            </div>
-				            <div class="card card-back">
-				                <div class="card-body">
-								    <p>Put Text Here</p>
-				                </div>
-				            </div>
-				        </div>
-				    </div>
-				</div>
-            </div>      
-            <div class="row">
-                <div class="col-md-4">
-				    <div class="flipcard">
-				        <div class="flipcard-wrap">
-				            <div class="card card-front">
-                                <code class="snippet">
-<!-- ----------------------------------> 
-<!-- ---------------------------------->    
-<!-- ---------------------------------->       
-<!-- ---------------------------------->   CODE HERE  
-<!-- ---------------------------------->                   
-<!-- ---------------------------------->     
-<!-- ----------------------------------> 
-                                </code>
-								<div class="card-body">
-								    <h5>TITLE HERE</h5>
-								</div>
-				            </div>
-				            <div class="card card-back">
-				                <div class="card-body">
-								    <p>Put Text Here</p>
-				                </div>
-				            </div>
-				        </div>
-				    </div>
-				</div>
-                <div class="col-md-4">
-				    <div class="flipcard">
-				        <div class="flipcard-wrap">
-				            <div class="card card-front">
-                                <code class="snippet">
-<!-- ----------------------------------> 
-<!-- ---------------------------------->    
-<!-- ---------------------------------->       
-<!-- ---------------------------------->   CODE HERE  
-<!-- ---------------------------------->                   
-<!-- ---------------------------------->     
-<!-- ----------------------------------> 
-                                </code>
-								<div class="card-body">
-								    <h5>TITLE HERE</h5>
-								</div>
-				            </div>
-				            <div class="card card-back">
-				                <div class="card-body">
-								    <p>Put Text Here</p>
-				                </div>
-				            </div>
-				        </div>
-				    </div>
-				</div>
-                <div class="col-md-4">
-				    <div class="flipcard">
-				        <div class="flipcard-wrap">
-				            <div class="card card-front">
-                                <code class="snippet">
-<!-- ----------------------------------> 
-<!-- ---------------------------------->    
-<!-- ---------------------------------->       
-<!-- ---------------------------------->   CODE HERE  
-<!-- ---------------------------------->                   
-<!-- ---------------------------------->     
-<!-- ----------------------------------> 
-                                </code>
-								<div class="card-body">
-								    <h5>TITLE HERE</h5>
-								</div>
-				            </div>
-				            <div class="card card-back">
-				                <div class="card-body">
-								    <p>Put Text Here</p>
-				                </div>
-				            </div>
-				        </div>
-				    </div>
-				</div>
-            </div>   
+            </div>
         </div>
     </body>
 </html>
